@@ -2,7 +2,7 @@
 <div class="wrapper">
 
 {{errors}}
-<form method="post" action="/useraccount/{{useraccount.id}}/edit" enctype="multipart/form-data">
+<form method="post" action="/useraccount/{{useraccount.id}}/edit" enctype="multipart/form-data"> <!-- Necessary enctype="multipart/form-data" to upload images -->
     {% csrf_token %}
     {{profile_edit_form}}
     <input type="submit" value="Save Changes"/>
