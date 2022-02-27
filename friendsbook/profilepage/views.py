@@ -4,9 +4,6 @@ from django.template import loader
 from .models import ProfilePage
 from django.apps import apps
 
-import datetime
-
-
 def profile_detail(request, profilepage_id):
     template = loader.get_template('profilepage.html')
     profile = ProfilePage.objects.get(id=profilepage_id)

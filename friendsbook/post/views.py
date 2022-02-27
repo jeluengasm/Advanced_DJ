@@ -5,12 +5,12 @@ from .forms import PostForm
 
 
 def post_feed(request):
+    post_form = PostForm()
     if request.method == 'POST':
-        add_post(request)
+        post_form = add_post(request)
     template = loader.get_template('feed.html')
     posts = Post.objects.all()
-    return HttpResponse(template.render({'posts': posts, 'new_post_form': PostForm()}, request))
-
+    return HttpResponse(template.render({'posts': posts, 'new_post_form': post_form}, request))
 
 def post_detail(request, post_id):
     template = loader.get_template('post_detail.html')
@@ -29,4 +29,6 @@ def add_post(request):
             new_post.save()
         else:
             print(form.errors)
-        return HttpResponse(status=200)
+        return form
+
+
